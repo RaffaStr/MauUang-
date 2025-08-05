@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kamu mau uang?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden; /* Mencegah scrollbar muncul saat tombol bergerak */
+        }
+        .container {
+            padding: 40px;
+            background-color: #333;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        #yesBtn {
+            background-color: #28a745;
+            color: white;
+            position: absolute; /* Kunci dari prank ini */
+        }
+        #noBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apakah kamu mau uang 2.000.000?</h1>
+        <div class="button-container">
+            <button id="yesBtn" class="btn">Tentu Saja!</button>
+            <button id="noBtn" class="btn" onclick="showAlert()">Tidak Mau</button>
+        </div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yesBtn');
+
+        // Fungsi untuk menggerakkan tombol
+        function moveButton() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            const buttonWidth = yesButton.offsetWidth;
+            const buttonHeight = yesButton.offsetHeight;
+
+            // Posisi acak baru, dikurangi ukuran tombol agar tidak keluar layar
+            const newX = Math.random() * (viewportWidth - buttonWidth);
+            const newY = Math.random() * (viewportHeight - buttonHeight);
+            
+            yesButton.style.left = `${newX}px`;
+            yesButton.style.top = `${newY}px`;
+        }
+
+        // Pindahkan tombol setiap kali mouse berada di atasnya
+        yesButton.addEventListener('mouseover', moveButton);
+
+        // Fungsi untuk tombol "Tidak"
+        function showAlert() {
+            alert('Yah, padahal cuma bercanda... :)');
+        }
+    </script>
+</body>
+</html>
