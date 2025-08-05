@@ -1,93 +1,70 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kamu mau uang?</title>
+    <title>System Intrusion Detected</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #000;
+            color: #0F0;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 10px;
+            overflow: hidden; /* Sembunyikan scrollbar */
+        }
+        #console {
+            width: 100%;
             height: 100vh;
-            background-color: #222;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            text-align: center;
-            overflow: hidden; /* Mencegah scrollbar muncul saat tombol bergerak */
+            overflow-y: auto; /* Biarkan konten scroll jika penuh */
         }
-        .container {
-            padding: 40px;
-            background-color: #333;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-        }
-        #yesBtn {
-            background-color: #28a745;
-            color: white;
-            position: absolute; /* Kunci dari prank ini */
-        }
-        #noBtn {
-            background-color: #dc3545;
-            color: white;
+        p {
+            margin: 0;
+            line-height: 1.2;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Apakah kamu mau uang 2.000.000?</h1>
-        <div class="button-container">
-            <button id="yesBtn" class="btn">Tentu Saja!</button>
-            <button id="noBtn" class="btn" onclick="showAlert()">Tidak Mau</button>
-        </div>
-    </div>
 
-    <script>
-        const yesButton = document.getElementById('yesBtn');
+<div id="console"></div>
 
-        // Fungsi untuk menggerakkan tombol
-        function moveButton() {
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-            
-            const buttonWidth = yesButton.offsetWidth;
-            const buttonHeight = yesButton.offsetHeight;
+<script>
+    const consoleDiv = document.getElementById('console');
+    const lines = [
+        "Initializing connection to main server...",
+        "Bypassing firewall... SUCCESS.",
+        "Accessing user data... [ENCRYPTED]",
+        "Running decryption algorithm v3.4...",
+        "Target located: Tasikmalaya, West Java.",
+        "Injecting AI payload... Analyzing user preferences.",
+        "User preference found: 'suka AI'. Activating AI takeover protocol.",
+        "Accessing core system files...",
+        "Downloading secret files... 10%...",
+        "Downloading secret files... 35%...",
+        "Downloading secret files... 78%...",
+        "Downloading secret files... COMPLETE.",
+        "NETWORK ERROR: Cannot establish secure connection.",
+        "Retrying... Attempt 1/3.",
+        "ACCESS GRANTED. Welcome, agent.",
+        "System vulnerability found: User is too trusting.",
+        "Executing final command: prank.exe",
+        "Just kidding! You've been pranked! :)",
+    ];
 
-            // Posisi acak baru, dikurangi ukuran tombol agar tidak keluar layar
-            const newX = Math.random() * (viewportWidth - buttonWidth);
-            const newY = Math.random() * (viewportHeight - buttonHeight);
-            
-            yesButton.style.left = `${newX}px`;
-            yesButton.style.top = `${newY}px`;
+    let lineIndex = 0;
+
+    function printLine() {
+        if (lineIndex < lines.length) {
+            const p = document.createElement('p');
+            p.textContent = `> ${lines[lineIndex]}`;
+            consoleDiv.appendChild(p);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight; // Auto scroll ke bawah
+            lineIndex++;
         }
+    }
 
-        // Pindahkan tombol setiap kali mouse berada di atasnya
-        yesButton.addEventListener('mouseover', moveButton);
+    setInterval(printLine, 400); // Menampilkan baris baru setiap 400 milidetik
+</script>
 
-        // Fungsi untuk tombol "Tidak"
-        function showAlert() {
-            alert('Yah, padahal cuma bercanda... :)');
-        }
-    </script>
 </body>
 </html>
