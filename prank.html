@@ -1,39 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Intrusion Detected</title>
+    <title>TERMINAL CRITICAL ERROR</title>
     <style>
         body {
             background-color: #000;
-            color: #0F0;
+            color: #0f0;
             font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 10px;
-            overflow: hidden; /* Sembunyikan scrollbar */
-        }
-        #console {
-            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            overflow-y: auto; /* Biarkan konten scroll jika penuh */
-        }
-        p {
             margin: 0;
-            line-height: 1.2;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+        .container {
+            border: 2px solid #0f0;
+            padding: 20px;
+            background: rgba(0, 40, 0, 0.2);
+            box-shadow: 0 0 20px #0f0;
+            max-width: 80%;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 1.5em;
+            color: #f00;
+            text-shadow: 0 0 10px #f00;
+            margin-bottom: 20px;
+        }
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+        .contact {
+            background: #0f0;
+            color: #000;
+            padding: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
-<div id="console"></div>
+    <div class="container">
+        <div class="error-code blink">!!! ACCESS DENIED BY RAFFA RIZQI !!!</div>
+        <p>Your System has been isolated due to unauthorized access attempt.</p>
+        <p>Security Protocol: 6281385435612_ENCRYPTED</p>
+        <hr color="#0f0">
+        <p>Semua data telah dienkripsi. Untuk mendapatkan kode enkripsi (Unlock Key), hubungi administrator segera:</p>
+        
+        <a href="https://wa.me/6281385435612" class="contact">HUBUNGI RAFFA RIZQI (6281385435612)</a>
+        
+        <p style="font-size: 0.8em; margin-top: 20px; color: #888;">
+            Attempting to close this window will trigger permanent data wipe.
+        </p>
+    </div>
 
-<script>
-    const consoleDiv = document.getElementById('console');
-    const lines = [
-        "Initializing connection to main server...",
-        "Bypassing firewall... SUCCESS.",
-        "Accessing user data... [ENCRYPTED]",
+    <script>
+        // Mencegah user mencoba menutup tab dengan peringatan konfirmasi
+        window.onbeforeunload = function() {
+            return "Sistem sedang di-lock oleh Raffa Rizqi. Keluar sekarang akan menyebabkan kehilangan data!";
+        };
+
+        // Otomatis Fullscreen saat user klik di mana saja (untuk efek menakut-nakuti)
+        document.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            }
+        });
+        
+        // Disable F12, Ctrl+Shift+I, dll (hanya untuk mempersulit inspeksi)
+        document.onkeydown = function(e) {
+            if(event.keyCode == 123) return false;
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+    </script>
+</body>
+</html>
         "Running decryption algorithm v3.4...",
         "Target located: Tasikmalaya, West Java.",
         "Injecting AI payload... Analyzing user preferences.",
